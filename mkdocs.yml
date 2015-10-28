@@ -1,0 +1,4 @@
+site_name: Mozilla Push Service Documentation
+pages:
+- Home: 'index.md'
+theme: readthedocs
