@@ -16,7 +16,7 @@ what to display.
 In 2015 the Push Service was rewritten in Python, and added preliminary
 [WebPush][wp] support for carrying data in push messages. The underlying
 protocol used between [Firefox][ffx] and the Push Service is an extended
-[SimplePush Protocol][] utilizing a websocket protocol that will eventually be
+[SimplePush Protocol](design.md#simplepush-protocol) utilizing a websocket protocol that will eventually be
 deprecated in favor of a specification compliant [WebPush][wp] HTTP 2.0
 protocol.
 
