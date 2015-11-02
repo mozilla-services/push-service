@@ -103,7 +103,8 @@ SimplePush
 
 UAID
 : A globally unique UserAgent ID. Used by the Push Service to associate clients
-  utilizing the websocket protocol with their associated channel ID's.
+  utilizing the websocket protocol with their associated channel ID's. This
+  string is always a UUID.
 
 User Agent
 : A device and software that is the recipient of push messages.
