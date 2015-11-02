@@ -1,0 +1,9 @@
+site_name: Mozilla Push Service Documentation
+repo_url: https://github.com/mozilla-services/push-service
+repo_name: Mozilla Push Service
+pages:
+- Home: 'index.md'
+- Design: 'design.md'
+theme: readthedocs
+markdown_extensions:
+- def_list
