@@ -94,7 +94,8 @@ uaid string REQUIRED
 
 channelIDs list of strings REQUIRED
 : If the UserAgent has a list of channelIDs it wants to be notified of, it must
-  pass these, otherwise an empty list.
+  pass these, otherwise an empty list. (Note: This is only required for
+  Simple Push)
 
 use_webpush bool OPTIONAL
 : If the UserAgent wants the extended WebPush data support for notifications it
@@ -342,7 +343,7 @@ headers map OPTIONAL
 : Encryption headers sent along with the data. Present only if data was sent.
 
 data string OPTIONAL
-: Data payload, if included.
+: Data payload, if included. This string is Base64 URL-encoded.
 
 **Example**
 
