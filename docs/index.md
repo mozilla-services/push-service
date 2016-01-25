@@ -59,6 +59,20 @@ here purely for historical and educational reasons.
 - [push-tester](https://github.com/bbangert/push-tester) - SimplePush load
   tester (no longer developed)
 
+## Sending Push Messages
+
+If you are interested in using WebPush for your application, there are
+a number of resources that should help.
+
+If you are adding Push to your browser or progressive enhancement
+application, see [Using the Push
+API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API)
+on MDN.
+
+If you are creating a service that sends Push messages to remote
+browser applications, see [HTTP Endpoints for
+Notifications](http://autopush.readthedocs.org/en/latest/http.html).
+
 ## Terminology
 
 The Push Service uses a range of terminology that can be difficult at first to
