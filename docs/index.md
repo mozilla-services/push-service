@@ -1,13 +1,18 @@
 # Mozilla Push Service
 
 Mozilla Push Service is the server-side project supporting Push Notifications in
-[Firefox][ffx] and [Firefox OS][fxos].
+[Firefox][ffx] and [Firefox OS][fxos]. The current server is
+[autopush](https://github.com/mozilla-services/autopush). You can
+learn how to use the web based API to push messages to web
+applications running Push by reading the [autopush HTTP API
+document](http://autopush.readthedocs.org/en/latest/http.html).
 
 ## History
 
 The Push Service was originally developed in Go, utilizing a websocket
-connection from [Firefox OS][fxos] to the Push service. It was deployed in 2013
-with the [SimplePush DOM
+connection from [Firefox OS][fxos] to the Push service. It was
+deployed in 2013
+with the legacy [SimplePush DOM
 API](https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API) that runs
 under [Firefox OS][fxos]. This API only supported incrementing version numbers,
 to wake a device so that it could check with an Application Server to determine
@@ -29,8 +34,8 @@ protocol.
 * [Jeremy Orem](https://github.com/oremj) - Operations (Portland, UTC-8)
 * [Chris Karlof](https://github.com/ckarlof) - Identity Services Manager (San Francisco, UTC-8)
 
-We meet for a weekly stand-up, as well as a larger meeting on Wednesday's to
-discuss Push specification details and client coordination.
+We meet for a weekly stand-up, as well as a larger meeting on
+Wednesdays to discuss Push specification details and client coordination.
 
 Additional ways to get in contact with the team:
 
@@ -45,8 +50,12 @@ repositories for development of the Push Server, and supporting tooling.
 
 - [autopush](https://github.com/mozilla-services/autopush) - Actively developed
   Push server
-- [pushgo](https://github.com/mozilla-services/pushgo) - Legacy Go-based Push
-  server (no longer developed or deployed)
+
+Older versions of the server (also known as "legacy") are provided
+here purely for historical and educational reasons.
+
+- [pushgo](https://github.com/mozilla-services/pushgo) - Legacy
+  Go-based Push server (no longer developed or deployed)
 - [push-tester](https://github.com/bbangert/push-tester) - SimplePush load
   tester (no longer developed)
 
