@@ -4,6 +4,7 @@ repo_name: Mozilla Push Service
 pages:
 - Home: 'index.md'
 - Design: 'design.md'
+- History: 'history.md'
 theme: readthedocs
 markdown_extensions:
 - def_list
