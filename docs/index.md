@@ -7,23 +7,42 @@ learn how to use the web based API to push messages to web
 applications running Push by reading the [autopush HTTP API
 document](http://autopush.readthedocs.org/en/latest/http.html).
 
-## History
+## Architecture
 
-The Push Service was originally developed in Go, utilizing a websocket
-connection from [Firefox OS][fxos] to the Push service. It was
-deployed in 2013
-with the legacy [SimplePush DOM
-API](https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API) that runs
-under [Firefox OS][fxos]. This API only supported incrementing version numbers,
-to wake a device so that it could check with an Application Server to determine
-what to display.
+![Push Architecture Diagram](assets/push_architecture.svg)
 
-In 2015 the Push Service was rewritten in Python, and added preliminary
-[WebPush][wp] support for carrying data in push messages. The underlying
-protocol used between [Firefox][ffx] and the Push Service is an extended
-[SimplePush Protocol](design.md#simplepush-protocol) utilizing a websocket protocol that will eventually be
-deprecated in favor of a specification compliant [WebPush][wp] HTTP 2.0
-protocol.
+## Code
+
+The current production deployment of Push is a Python-based websocket server
+named **autopush**, developed on Github. The Push Service team has several
+repositories for development of the Push Server, and supporting tooling.
+
+- [autopush](https://github.com/mozilla-services/autopush) - Push connection
+  and endpoint server
+- [push-processor](https://github.com/mozilla-services/push-processor) -
+  Backend Push log processor to extract developer registered message metadata
+  for the Developer Dashboard
+- [push-messages](https://github.com/mozilla-services/push-messages/) - API app
+  to register developer public-keys for the processor to extract and return
+  recent cached message metadata for the Developer Dashboard
+- [push-dev-dashboard](https://github.com/mozilla-services/push-dev-dashboard) -
+  Developer Dashboard to view recent Push message activity and register for
+  developer Push services
+- [push_setup](https://github.com/mozilla-services/push_setup) - Full-Stack AWS
+  setup using CloudFormation for a complete or partial Push deployment
+- [ap-loadtester](https://github.com/mozilla-services/ap-loadtester/) - Load and
+  end-to-end Push testing application
+
+See the [architecture](#architecture) image for reference on what components
+each of these code pieces correspond to.
+
+Older versions of the server (also known as "legacy") are provided
+here purely for historical and educational reasons.
+
+- [pushgo](https://github.com/mozilla-services/pushgo) - Legacy
+  Go-based Push server (no longer developed or deployed)
+- [push-tester](https://github.com/bbangert/push-tester) - SimplePush load
+  tester (no longer developed)
 
 ## People and Places
 
@@ -41,23 +60,6 @@ Additional ways to get in contact with the team:
 
 * The [Push mailing list](http://groups.google.com/a/mozilla.com/group/push/)
 * The `#push` channel on [Mozilla IRC](https://wiki.mozilla.org/IRC)
-
-## Code
-
-The current production deployment of Push is a Python-based websocket server
-named **autopush**, developed on Github. The Push Service team has several
-repositories for development of the Push Server, and supporting tooling.
-
-- [autopush](https://github.com/mozilla-services/autopush) - Actively developed
-  Push server
-
-Older versions of the server (also known as "legacy") are provided
-here purely for historical and educational reasons.
-
-- [pushgo](https://github.com/mozilla-services/pushgo) - Legacy
-  Go-based Push server (no longer developed or deployed)
-- [push-tester](https://github.com/bbangert/push-tester) - SimplePush load
-  tester (no longer developed)
 
 ## Sending Push Messages
 
