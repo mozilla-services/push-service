@@ -31,6 +31,10 @@ Currently the Mozilla Push Service only supports an extended SimplePush protocol
 using a websocket between the UA and the Push Service.
 
 ## SimplePush Protocol
+<!--
+remember to update
+https://github.com/mozilla-services/autopush/docs/architecture.rst
+-->
 
 This documents the current extended SimplePush protocol used between the UA and
 the Push Service.
@@ -109,7 +113,8 @@ PushServer MAY ignore this data.
 
     {
       "messageType": "hello",
-      "uaid": "fd52438f-1c49-41e0-a2e4-98e49833cc9c"
+      "uaid": "fd52438f-1c49-41e0-a2e4-98e49833cc9c",
+      "use_webpush": true
     }
 
 ### Register
@@ -225,11 +230,24 @@ messageType = "unregister"
 channelID string REQUIRED
 : ChannelID that should be unregistered.
 
+code numeric OPTIONAL
+: Numeric code describing unregistration.
+
+##### Uregistration Codes
+
+* 200 - Subscription deleted manually (either via `.unsubscribe()` or
+  by clearing history)
+
+* 201 - Unregistered after exceeding quota
+
+* 202 - Unregistered because user revoked permission
+
 **Example**
 
     {
         "messageType": "unregister",
-        "channelID": "d9b74644-4f97-46aa-b8fa-9393985cd6cd"
+        "channelID": "d9b74644-4f97-46aa-b8fa-9393985cd6cd",
+        "code": 200
     }
 
 #### PushServer -> UserAgent
@@ -357,7 +375,7 @@ data string OPTIONAL
     {
         "messageType": "notification",
         "channelID": "431b4391-c78f-429a-a134-f890b5adc0bb",
-        "version": "a7695fa0-9623-4890-9c08-cce0231e4b36:d9b74644-4f97-46aa-b8fa-9393985cd6cd"
+        "version": "A7695fa0962348909Z08d"
     }
 
 #### UserAgent -> PushServer
@@ -368,16 +386,46 @@ the ack MUST be sent as soon as the message has been processed, otherwise the
 Push Server MAY cease sending notifications to avoid holding excessive client
 state.
 
-messageType = "ack"
+messageType = "ack" or "nack"
 
-updates list
-: The list contains one or more {"channelID": channelID, "version": N} pairs.
+updates list REQUIRED
+: The list contains one or more {"channelID": channelID, "version": N,
+"code": code} pairs.
+
+##### Acknowlegment Codes
+
+###### ACK
+
+* 100 - Message successfully delivered to Application
+
+* 101 - Message received, but failed to decrypt
+
+* 102 - Message not delivered to application for other reason
+
+###### NACK
+
+* 300 - RESERVED
+
+* 301 - `push` handler threw an uncaught exception
+
+* 302 - The promise passed to `pushEvent.waitUntil()` rejected with an
+  error
+
+* 303 - Other error occurred while dispatching the event
+
+**NOTE**: Bridged connections (connections that travel across third
+party networks) may return an `ack` first, then later return a `nack`
+for the same message. This is due to restrictions imposed by third
+party networks.
 
 **Example**
 
     {
         "messageType": "ack",
-        "updates": [{ "channelID": "431b4391-c78f-429a-a134-f890b5adc0bb", "version": 23 }, { "channelID": "a7695fa0-9623-4890-9c08-cce0231e4b36", "version": 42 } ]
+        "updates": [{ "channelID":
+"431b4391-c78f-429a-a134-f890b5adc0bb", "version": 23, "code": 200 },
+{ "channelID": "a7695fa0-9623-4890-9c08-cce0231e4b36", "version": 42,
+"code": 200} ]
     }
 
 [spapi]: https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API
