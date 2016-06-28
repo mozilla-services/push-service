@@ -5,7 +5,7 @@ Mozilla Push Service is the server-side project supporting Push Notifications in
 [autopush](https://github.com/mozilla-services/autopush). You can
 learn how to use the web based API to push messages to web
 applications running Push by reading the [autopush HTTP API
-document](http://autopush.readthedocs.org/en/latest/http.html).
+document](https://autopush.readthedocs.io/en/latest/http.html).
 
 ## Architecture
 
@@ -73,7 +73,7 @@ on MDN.
 
 If you are creating a service that sends Push messages to remote
 browser applications, see [HTTP Endpoints for
-Notifications](http://autopush.readthedocs.org/en/latest/http.html).
+Notifications](https://autopush.readthedocs.io/en/latest/http.html).
 
 ## Terminology
 

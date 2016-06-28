@@ -7,7 +7,7 @@ the [Firefox browser][ffx] and [Firefox OS][fxos].
 
 Interested in contributing to the development of Mozilla's Push Service?
 Complete documentation on the Push Service, History, and how to get involved
-can be found at [the Push Service's documentation](http://mozilla-push-service.readthedocs.org/).
+can be found at [the Push Service's documentation](https://mozilla-push-service.readthedocs.io/).
 
 ##### Bugs List: [waffle.io/mozilla-services/push-service](https://waffle.io/mozilla-services/push-service/)
 
@@ -29,7 +29,7 @@ Server + File Watching:
 mkdocs serve --dev-addr localhost:9032
 ```
 
-Publishing to http://mozilla-push-service.readthedocs.org
+Publishing to https://mozilla-push-service.readthedocs.io
 
 ```
 # Documentation is built automatically from this repository.
