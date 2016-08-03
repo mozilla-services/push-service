@@ -3,6 +3,7 @@ repo_url: https://github.com/mozilla-services/push-service
 repo_name: Mozilla Push Service
 pages:
 - Home: 'index.md'
+- Development: 'development.md'
 - Design: 'design.md'
 - History: 'history.md'
 theme: readthedocs
