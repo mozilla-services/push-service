@@ -70,76 +70,86 @@ pointing at your fork of the repository.
 
 1. Fetch the latest code and create a local branch:
 
- `$ git fetch <mozilla-services>`
+    `$ git fetch <mozilla-services>`
 
- `$ git checkout -b <local_branch> <mozilla-services>/master`
+    `$ git checkout -b <local_branch> <mozilla-services>/master`
  
-  Name the branch appropriately for the fix/feat/docs commit you're working on.
-  Ideally a Pull Request will have a single commit to address the issue.
+    Name the branch appropriately for the fix/feat/docs commit you're working on.
+    Ideally a Pull Request will have a single commit to address the issue.
+    <br /><br />
 
 2. Code/hack/do stuff then commit:
 
- `$ git commit -a `
+    `$ git commit -a `
 
-  Make sure to phrase your commit message appropriately per the Contributing
-  documentation for the repository. Most Push-related repositories use an
-  [Angular-based commit style](https://github.com/mozilla-services/autopush/blob/master/CONTRIBUTING.md).
+    Make sure to phrase your commit message appropriately per the Contributing
+    documentation for the repository. Most Push-related repositories use an
+    [Angular-based commit style](https://github.com/mozilla-services/autopush/blob/master/CONTRIBUTING.md).
   
-  Before committing and pushing code, remember to run the appropriate tests
-  locally to avoid having our CI systems reject it. PR's that don't pass the
-  automated tests won't be reviewed until they pass.
+    Before committing and pushing code, remember to run the appropriate tests
+    locally to avoid having our CI systems reject it. PR's that don't pass the
+    automated tests won't be reviewed until they pass.
+    <br /><br />
 
 3. Push local branch to your cloned repository: 
 
- `$ git push --set-upstream <fork> <local_branch> `
+    `$ git push --set-upstream <fork> <local_branch> `
  
-  (`git push -u <fork> <local_branch>[:remote_name]` should work if you want to
-  publish your changes to a branch with a different name than `[local_branch]`.)
+     (`git push -u <fork> <local_branch>[:remote_name]` should work if you want to
+     publish your changes to a branch with a different name than `[local_branch]`.)
+     <br /><br />
 
 4. Create a [PR in GitHub](https://help.github.com/articles/using-pull-requests/). 
 
-  If you know who should code review this PR, you can write `r? @username`
-  in the text of the PR and they will automatically be assigned to it.
-  If not, don't worry: a reviewer will be randomly selected and notified.
+    If you know who should code review this PR, you can write `r? @username`
+    in the text of the PR and they will automatically be assigned to it.
+    If not, don't worry: a reviewer will be randomly selected and notified.
+    <br /><br />
 
 5. Wait for reviewers' feedback - if something needs to be fixed, either amend
    the existing commits if the changes are minor, or fix it in a new commit on 
    the same branch, optionally using `--fixup`:
 
- `$ git commit --fixup=<sha1_of_relevant_commit_on_branch>`
+    `$ git commit --fixup=<sha1_of_relevant_commit_on_branch>`
 
-  Alternatively, add the following to your `.gitconfig` and simply use `git fixup`:
+    Alternatively, add the following to your `.gitconfig` and simply use `git fixup`:
 
-  ```
-  [alias]
-  	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
-  	ri = rebase --interactive --autosquash
-  ```
+    ```
+    [alias]
+    	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed \"s/fixup\\! //\")\"' -
+    	ri = rebase --interactive --autosquash
+    ```
+    <br /><br />
 
 6. Use `git push` to update the Pull Request. Repeat steps 5-6 until the review
    is accepted. If existing commits were amended, a force push will be necessary
    (see step 8).
+   <br /><br />
 
 7. When you know there is a substantive change on master that affects your
    patch, update `<mozilla>` and rebase your local branch to make sure your
    patch still applies correctly: 
 
- `$ git fetch <mozilla-services>`
+    `$ git fetch <mozilla-services>`
 
- `$ git rebase <mozilla-services>/master`
+    `$ git rebase <mozilla-services>/master`
 
-  You may have to fix merge conflicts on the way.
+    You may have to fix merge conflicts on the way.
+    <br /><br />
 
 8. Force-push your changes: 
 
- `$ git push -f <fork> <local_branch>`
+    `$ git push -f <fork> <local_branch>`
+    <br /><br />
 
 9. Once your patch is accepted and based on a recent master, squash the commits
    together for a cleaner history (if requested):
 
     `$ git rebase -i --autosquash <mozilla-services>/master`
+    <br /><br />
 
 10. Force push the squashed commits to github (see step 8).
+    <br /><br />
 
 11. When the reviewer thinks the code is ready, they will leave a comment
     saying "r+", meaning "review granted."  Then our bot will
