@@ -33,6 +33,11 @@ aggregates issue tracking across all Push-related repos.
 
 All issues must have a milestone attached before assignment.
 
+The milestone is named after the Aha feature card and number. A feature
+card given the identifier `PUSHSVC-23` named `Internal Debugging Dashboard`
+would have a milestone of `PUSHSVC-23: Internal Debugging Dashboard`. The
+description then links back to the feature card.
+
 ### Labels
 
 Issues are assigned a priority based on the release the issue is targeted at.
@@ -51,6 +56,15 @@ applied to categorize the issue appropriately.
 Issues being worked on are moved to the **In Progress** column and assigned to
 the person working on the issue.
 
+### Versions
+
+Push repositories use a {major}.{minor}.{patch} version scheme, with
+patch tags released to address emergency issues in a deployed release.
+Major versions are generally large re-writes and assumed to possibly
+break backwards compatibility.
+
+Releases are tagged under `release/{major}.{minor}` branches.
+
 ### Standups
 
 A short stand-up meeting is held every Monday at 10:20 AM Pacific time. This
@@ -59,7 +73,7 @@ planned work for the next week.
 
 ### Github Workflow
 
-(Based heavily on Servo's Workflow)
+(Based heavily on [Servo's Workflow](https://github.com/servo/servo/wiki/Github-workflow))
 
 You will need to [fork](https://help.github.com/articles/fork-a-repo/) the 
 appropriate repository in order to be able to publish your changes. Push Team
