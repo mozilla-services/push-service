@@ -49,6 +49,7 @@ here purely for historical and educational reasons.
 * [Ben Bangert](https://github.com/bbangert) - Engineering (San Francisco, UTC-8)
 * [JR Conlin](https://github.com/jrconlin) - Engineering (Mountain View, UTC-8)
 * [Kit Cambridge](https://github.com/kitcambridge) - Engineering (Mountain View, UTC-8)
+* [Philip Jenvey](https://github.com/pjenvey) - Engineering (San Francisco, UTC-8)
 * [Richard Pappalardo](https://github.com/rpappalax) - QA (Mountain View, UTC-8)
 * [Jeremy Orem](https://github.com/oremj) - Operations (Portland, UTC-8)
 * [Chris Karlof](https://github.com/ckarlof) - Identity Services Manager (San Francisco, UTC-8)

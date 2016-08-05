@@ -15,3 +15,7 @@ protocol used between [Firefox][ffx] and the Push Service is an extended
 [SimplePush Protocol](design.md#simplepush-protocol) utilizing a websocket protocol that will eventually be
 deprecated in favor of a specification compliant [WebPush][wp] HTTP 2.0
 protocol.
+
+[wp]: https://webpush-wg.github.io/webpush-protocol/
+[fxos]: https://www.mozilla.org/en-US/firefox/os/
+[ffx]: https://www.mozilla.org/en-US/firefox/
