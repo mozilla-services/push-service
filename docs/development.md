@@ -98,7 +98,7 @@ pointing at your fork of the repository.
 
     Make sure to phrase your commit message appropriately per the Contributing
     documentation for the repository. Most Push-related repositories use an
-    [Angular-based commit style](https://github.com/mozilla-services/autopush/blob/master/CONTRIBUTING.md).
+    [Angular-based commit style][contrib].
   
     Before committing and pushing code, remember to run the appropriate tests
     locally to avoid having our CI systems reject it. PR's that don't pass the
@@ -172,3 +172,4 @@ pointing at your fork of the repository.
 
 [MPSM]: https://github.com/mozilla-services/push-service/milestones
 [OKR]: https://library.gv.com/how-google-sets-goals-okrs-a1f69b0b72c7#.4540y9hzl
+[contrib]: https://github.com/mozilla-services/autopush/blob/master/CONTRIBUTING.md
