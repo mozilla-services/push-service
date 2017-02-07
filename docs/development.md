@@ -1,7 +1,7 @@
 # Development Process
 
-We develop and deploy on a 2-3 week schedule. Before a deploy, a new release is
-tagged and cut, deployment ticket filed, and QA verified. On occasion a release
+We develop and deploy on a 2 week schedule. A new release is
+tagged and cut a week before deploy, QA files a deployment ticket filed then verifies the release. On occasion a release
 will get a full suite of load-tests as well.
 
 Some of the ancillary Push projects have no set release schedule and are
@@ -11,29 +11,40 @@ released as needed.
 
 Product-level feature planning is done using OKR's, similar to
 [Google's OKR process][OKR]. Finalized OKR's per quarter result in feature
-cards being created in Aha, where they're then prioritized for work to begin. A
+cards being created in Github, where they're then prioritized for work to begin. A
 single OKR may result in multiple feature cards depending on scope, each card
-is tagged for its corresponding OKR #.
+is tagged for its corresponding OKR #. A Github project is created for each
+quarters OKR's to track progress.
 
-* [Aha Feature Cards](https://mozilla.aha.io/products/PUSHSVC/feature_cards)
+* [Push OKR's](https://github.com/mozilla-services/push-okr)
 
 ## Code Development
 
-Each Aha card being actively developed has a milestone created in the main
+Each Github feature card being actively developed has a milestone created in the main
 [Mozilla Push-Service Repository][MPSM], which is then propagated out to all
 Push-related GitHub repositories.
+
+### Architecture Discussion & Documentation
+
+Architecture changes and proposals are discussed on the
+[Push-Service mail list][PSML] using the "Design: " subject prefix. When
+a topic has been idle at least a week with no further replies it is
+considered at the next standup. If the team approves the change, the
+appropriate Github issues are created, and an email sent on the topic
+to the list pointing to the outcome and issue created. Otherwise an
+email is sent on the topic indicating it will not be implemented.
 
 ### Milestones & Waffleboard
 
 Issues are created in their appropriate repositories and associated with a
 milestone. Ownership and triage of issues is done via a single Waffleboard that
-aggregates issue tracking across all Push-related repos.
+aggregates issue tracking across all Push-related repositories.
 
 * [Push Waffleboard](https://waffle.io/mozilla-services/push-service)
 
 All issues must have a milestone attached before assignment.
 
-The milestone is named after the Aha feature card and number. A feature
+The milestone is named after the Github feature card and number. A feature
 card given the identifier `PUSHSVC-23` named `Internal Debugging Dashboard`
 would have a milestone of `PUSHSVC-23: Internal Debugging Dashboard`. The
 description then links back to the feature card.
@@ -70,6 +81,11 @@ Releases are tagged under `release/{major}.{minor}` branches.
 A short stand-up meeting is held every Monday at 10:20 AM Pacific time. This
 meeting covers bug triage and a summary of work completed in the past week and
 planned work for the next week.
+
+Standup meetings may also discuss outstanding design documents that are posted
+on the Push-Service mail list to determine how to proceed.
+
+Notes from every standup are posted to the [Push-Service mail list][PSML].
 
 ### Github Workflow
 
@@ -173,3 +189,4 @@ pointing at your fork of the repository.
 [MPSM]: https://github.com/mozilla-services/push-service/milestones
 [OKR]: https://library.gv.com/how-google-sets-goals-okrs-a1f69b0b72c7#.4540y9hzl
 [contrib]: https://github.com/mozilla-services/autopush/blob/master/CONTRIBUTING.md
+[PSML]: https://groups.google.com/a/mozilla.com/forum/#!forum/push-service
