@@ -57,9 +57,12 @@ here purely for historical and educational reasons.
 We meet for a weekly stand-up, as well as a larger meeting on
 Wednesdays to discuss Push specification details and client coordination.
 
+## Mail Lists and IRC
+
 Additional ways to get in contact with the team:
 
-* The [Push mailing list](http://groups.google.com/a/mozilla.com/group/push/)
+* The [Push-Service mail list (public)](https://groups.google.com/a/mozilla.com/forum/#!forum/push-service)
+* The [Push mailing list (Mozilla internal)](http://groups.google.com/a/mozilla.com/group/push/)
 * The `#push` channel on [Mozilla IRC](https://wiki.mozilla.org/IRC)
 
 ## Sending Push Messages
