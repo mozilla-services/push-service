@@ -98,6 +98,8 @@ worked on. In these instructions `<mozilla-services>` is the name of the remote
 pointing to the remote at the appropriate repo and `<fork>` is the remote
 pointing at your fork of the repository. 
 
+All commits should be [signed](https://help.github.com/articles/signing-commits-using-gpg/).
+
 1. Fetch the latest code and create a local branch:
 
     `$ git fetch <mozilla-services>`
@@ -110,7 +112,7 @@ pointing at your fork of the repository.
 
 2. Code/hack/do stuff then commit:
 
-    `$ git commit -a `
+    `$ git commit -S -a `
 
     Make sure to phrase your commit message appropriately per the Contributing
     documentation for the repository. Most Push-related repositories use an
@@ -140,7 +142,7 @@ pointing at your fork of the repository.
    the existing commits if the changes are minor, or fix it in a new commit on 
    the same branch, optionally using `--fixup`:
 
-    `$ git commit --fixup=<sha1_of_relevant_commit_on_branch>`
+    `$ git commit -S --fixup=<sha1_of_relevant_commit_on_branch>`
 
     Alternatively, add the following to your `.gitconfig` and simply use `git fixup`:
 
