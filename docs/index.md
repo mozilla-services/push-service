@@ -103,7 +103,7 @@ Application Server
   delivery of a push message.
 
 Channel ID
-: Legacy terminology for a Push Message Subscription utilized by SimplePush and
+: Legacy terminology for a Push Message Subscription utilized by WebPush and
   the websocket client protocol.
 
 Endpoint
@@ -126,8 +126,8 @@ Push Service
 : A service that delivers push messages to user agents.
 
 SimplePush
-: Firefox OS specific Push system that carries no data, only an incrementing
-  version number. The Mozilla Push Service continues to support this legacy API
+: Deprecated Firefox OS specific Push system that carries no data, only an incrementing
+  version number. The Mozilla Push Service no longer continues to support this legacy API
   for Firefox OS devices.
 
 UAID
@@ -145,8 +145,7 @@ WebPush
 
 ## Alternate Implementation
 
-Other groups have implemented Push Services implementing SimplePush and/or
-WebPush.
+Other groups have implemented Push Services implementing WebPush.
 
 - [Aerogear Unified Push Server](
 https://github.com/aerogear/aerogear-unifiedpush-server)
@@ -156,9 +155,6 @@ https://github.com/aerogear/aerogear-unifiedpush-server)
 [Matthias Wessendorf](https://gist.github.com/matzew) has provided [a quick
 hack](https://gist.github.com/matzew/cbda360d72eaaef75971) showing how to call
 the server by hand.
-
-Sebastian Blanc provides a [handy video showing how to send messages to mobile
-devices](https://www.youtube.com/watch?v=PpPNSu2ENUA) and a Raspberry Pi using SimplePush.
 
 [wpst]: https://tools.ietf.org/html/draft-ietf-webpush-protocol-01#section-1.1
 [wp]: https://webpush-wg.github.io/webpush-protocol/

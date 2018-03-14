@@ -24,18 +24,18 @@ specification](https://tools.ietf.org/html/draft-ietf-webpush-protocol-01#sectio
             |<---------------------|                      |
             |                      |                      |
 
-In SimplePush, the Push Message is only a version used to wake UA code. Firefox
-OS uses [the SimplePush API][spapi] for its UA subscription API.
+In WebPush, the Push Message is used to wake UA code. Firefox
+OS uses the [the WebPush API][pushapi] for its UA subscription API.
 
-Currently the Mozilla Push Service only supports an extended SimplePush protocol
+Currently the Mozilla Push Service supports a proprietary protocol
 using a websocket between the UA and the Push Service.
 
-## SimplePush Protocol
+## WebPush Proprietary Protocol
 
-This documents the current extended SimplePush protocol used between the UA and
+This documents the current Push Service Protocol used between the UA and
 the Push Service.
 
-The SimplePush protocol uses a websocket that carries JSON messages in a mostly
+The protocol uses a websocket that carries JSON messages in a mostly
 request/response style format. The only exception is that after the **Hello**
 response the Push Server will send any stored notifications as well as new
 notifications when they arrive.
@@ -94,12 +94,11 @@ uaid string REQUIRED
 
 channelIDs list of strings REQUIRED
 : If the UserAgent has a list of channelIDs it wants to be notified of, it must
-  pass these, otherwise an empty list. (Note: This is only required for
-  Simple Push)
+  pass these, otherwise an empty list.
 
 use_webpush bool OPTIONAL
-: If the UserAgent wants the extended WebPush data support for notifications it
-  must include this field with a value of *true*.
+: If the UserAgent wants the WebPush data support for notifications it
+  may include this field with a value of *true*. This field may appear for legacy reasons.
 
 Extra fields: The UserAgent MAY pass any extra JSON data to the PushServer. This
 data may include information required to wake up the UserAgent out-of-band. The
@@ -190,8 +189,7 @@ pushEndpoint string REQUIRED
 
 ### Unregister
 
-Unregistration is an optional procedure for basic SimplePush but is **required**
-for the WebPush extensions.
+Unregistration is **required** for the WebPush.
 
 PushServers MUST support it. UserAgents SHOULD support it.
 
@@ -325,11 +323,8 @@ Notifications are acknowledged by the UserAgent. PushServers should retry unackn
 
 messageType = "notification"
 
-updates list REQUIRED
-: The list contains one or more {"channelID": "id", "version": N } pairs.
-
-With the webpush extension to SimplePush, the following attributes are present
-in each notification instead of the single ``updates`` list above. A
+The following attributes are present
+in each notification. A
 notification message is sent for every stored notification individually, as well
 as new notifications.
 
@@ -349,13 +344,6 @@ data string OPTIONAL
 
     {
         "messageType": "notification",
-        "updates": [{ "channelID": "431b4391-c78f-429a-a134-f890b5adc0bb", "version": 23 }, { "channelID": "a7695fa0-9623-4890-9c08-cce0231e4b36", "version": 42 } ]
-    }
-
-**Example (WebPush extension)**
-
-    {
-        "messageType": "notification",
         "channelID": "431b4391-c78f-429a-a134-f890b5adc0bb",
         "version": "a7695fa0-9623-4890-9c08-cce0231e4b36:d9b74644-4f97-46aa-b8fa-9393985cd6cd"
     }
@@ -363,8 +351,8 @@ data string OPTIONAL
 #### UserAgent -> PushServer
 
 It is RECOMMENDED that the UserAgent try to batch all pending acknowledgements
-into fewer messages if bandwidth is a concern. When using the WebPush extension
-the ack MUST be sent as soon as the message has been processed, otherwise the
+into fewer messages if bandwidth is a concern. The ack MUST be sent as soon as 
+the message has been processed, otherwise the
 Push Server MAY cease sending notifications to avoid holding excessive client
 state.
 
@@ -380,4 +368,4 @@ updates list
         "updates": [{ "channelID": "431b4391-c78f-429a-a134-f890b5adc0bb", "version": 23 }, { "channelID": "a7695fa0-9623-4890-9c08-cce0231e4b36", "version": 42 } ]
     }
 
-[spapi]: https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API
+[pushapi]: https://developer.mozilla.org/en-US/docs/Web/API/Simple_Push_API
