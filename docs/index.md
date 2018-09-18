@@ -1,7 +1,7 @@
 # Mozilla Push Service
 
 Mozilla Push Service is the server-side project supporting Push Notifications in
-[Firefox][ffx] and [Firefox OS][fxos]. The current server is
+[Firefox][ffx]. The current server is
 [autopush](https://github.com/mozilla-services/autopush). You can
 learn how to use the web based API to push messages to web
 applications running Push by reading the [autopush HTTP API
@@ -19,43 +19,24 @@ repositories for development of the Push Server, and supporting tooling.
 
 - [autopush](https://github.com/mozilla-services/autopush) - Push connection
   and endpoint server
-- [push-processor](https://github.com/mozilla-services/push-processor) -
-  Backend Push log processor to extract developer registered message metadata
-  for the Developer Dashboard
-- [push-messages](https://github.com/mozilla-services/push-messages/) - API app
-  to register developer public-keys for the processor to extract and return
-  recent cached message metadata for the Developer Dashboard
-- [push-dev-dashboard](https://github.com/mozilla-services/push-dev-dashboard) -
-  Developer Dashboard to view recent Push message activity and register for
-  developer Push services
-- [push_setup](https://github.com/mozilla-services/push_setup) - Full-Stack AWS
-  setup using CloudFormation for a complete or partial Push deployment
+- [megaphone](https://github.com/mozilla-services/megaphone) - Global broadcast
+  server
+- [autopush-rs](https://github.com/mozilla-services/autopush-rs) - Push connection
+  server, written in Rust
 - [ap-loadtester](https://github.com/mozilla-services/ap-loadtester/) - Load and
   end-to-end Push testing application
 
 See the [architecture](#architecture) image for reference on what components
 each of these code pieces correspond to.
 
-Older versions of the server (also known as "legacy") are provided
-here purely for historical and educational reasons.
-
-- [pushgo](https://github.com/mozilla-services/pushgo) - Legacy
-  Go-based Push server (no longer developed or deployed)
-- [push-tester](https://github.com/bbangert/push-tester) - SimplePush load
-  tester (no longer developed)
-
 ## People and Places
 
 * [Ben Bangert](https://github.com/bbangert) - Engineering (San Francisco, UTC-8)
 * [JR Conlin](https://github.com/jrconlin) - Engineering (Mountain View, UTC-8)
-* [Kit Cambridge](https://github.com/kitcambridge) - Engineering (Mountain View, UTC-8)
 * [Philip Jenvey](https://github.com/pjenvey) - Engineering (San Francisco, UTC-8)
-* [Richard Pappalardo](https://github.com/rpappalax) - QA (Mountain View, UTC-8)
+* [Chris Hartjes](https://github.com/chartjes) - QA (Ontario, UTC-5)
 * [Jeremy Orem](https://github.com/oremj) - Operations (Portland, UTC-8)
-* [Chris Karlof](https://github.com/ckarlof) - Identity Services Manager (San Francisco, UTC-8)
-
-We meet for a weekly stand-up, as well as a larger meeting on
-Wednesdays to discuss Push specification details and client coordination.
+* [Janet Dragojevic](https://github.com/jdragojevic) - Application Services Manager (New York, UTC-5)
 
 ## Mail Lists and IRC
 
@@ -127,8 +108,7 @@ Push Service
 
 SimplePush
 : Deprecated Firefox OS specific Push system that carries no data, only an incrementing
-  version number. The Mozilla Push Service no longer continues to support this legacy API
-  for Firefox OS devices.
+  version number. The Mozilla Push Service no longer continues to support this legacy API.
 
 UAID
 : A globally unique UserAgent ID. Used by the Push Service to associate clients
@@ -158,5 +138,4 @@ the server by hand.
 
 [wpst]: https://tools.ietf.org/html/draft-ietf-webpush-protocol-01#section-1.1
 [wp]: https://webpush-wg.github.io/webpush-protocol/
-[fxos]: https://www.mozilla.org/en-US/firefox/os/
 [ffx]: https://www.mozilla.org/en-US/firefox/
